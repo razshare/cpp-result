@@ -21,7 +21,8 @@ Every single time your have `Result<T>` on your hands, you **must** unwrap it an
 This gives you type safety and ensures you always know, at the language server level and compile time, when something can go wrong.
 
 ```c++
-auto [name, error] = success("world").unwrap();
+//auto [name, error] = success("world").unwrap();
+auto [name, error] = failure<std::string>("Something is wrong.").unwrap();
 if(error.code > 0){
     // Something is wrong.
     return;
